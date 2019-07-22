@@ -6,16 +6,21 @@
   </label>
   <!-- (click) passes input value to add() and then clears the input -->
   <button (click)="add(heroName.value); heroName.value=''">
-    add
+    ADD
   </button>
 </div>
 
-<ul class="heroes">
-  <li *ngFor="let hero of heroes">
-    <a routerLink="/detail/{{hero.id}}">
-      <span class="badge">{{hero.id}}</span> {{hero.name}}
-    </a>
-    <button class="delete" title="delete hero"
-      (click)="delete(hero)">x</button>
-  </li>
-</ul>
+<div class="row">
+  <div class="col-4 card" style="list-style: none" *ngFor="let repo of repos">
+    
+  <img class="card-img-top" style="width:50px" src="{{repo.avatar}}" alt="Card image cap">
+  <div class="card-body">
+    <a href="{{repo.url}}">
+    <h5 class="card-title">{{repo.name}}</h5>
+  </a>
+    <p class="card-text">{{repo.description}}</p>
+  
+  </div>
+</div>
+
+</div>

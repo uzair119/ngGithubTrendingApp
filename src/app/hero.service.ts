@@ -6,6 +6,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 
 import { Hero } from './hero';
 import { MessageService } from './message.service';
+import { Repository } from './Repository';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -15,7 +16,7 @@ const httpOptions = {
 export class HeroService {
 
   private heroesUrl = 'api/heroes';  // URL to web api
-
+  private reposUrl = 'https://github-trending-api.now.sh/repositories?language=javascript&since=weekly'
   constructor(
     private http: HttpClient,
     private messageService: MessageService) { }
@@ -26,6 +27,13 @@ export class HeroService {
       .pipe(
         tap(_ => this.log('fetched heroes')),
         catchError(this.handleError<Hero[]>('getHeroes', []))
+      );
+  }
+
+  getRepos (): Observable<Repository[]> {
+    return this.http.get<Repository[]>(this.reposUrl)
+      .pipe(
+        tap(_ => this.log('fetched repos'))
       );
   }
 
