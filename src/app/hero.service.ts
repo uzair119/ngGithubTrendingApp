@@ -7,6 +7,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { Hero } from './hero';
 import { MessageService } from './message.service';
 import { Repository } from './Repository';
+import { Language } from './language';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -16,7 +17,9 @@ const httpOptions = {
 export class HeroService {
 
   private heroesUrl = 'api/heroes';  // URL to web api
-  private reposUrl = 'https://github-trending-api.now.sh/repositories?language=javascript&since=weekly'
+  private reposUrl = 'https://github-trending-api.now.sh/repositories';
+  private languageUrl = 'https://github-trending-api.now.sh/languages';
+
   constructor(
     private http: HttpClient,
     private messageService: MessageService) { }
@@ -34,6 +37,13 @@ export class HeroService {
     return this.http.get<Repository[]>(this.reposUrl)
       .pipe(
         tap(_ => this.log('fetched repos'))
+      );
+  }
+
+  getLanguages (): Observable<Language[]> {
+    return this.http.get<Language[]>(this.languageUrl)
+      .pipe(
+        tap(_ => this.log('fetched languages'))
       );
   }
 

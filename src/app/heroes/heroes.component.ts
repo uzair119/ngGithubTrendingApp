@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
 import { Repository } from '../Repository';
+import { Language } from '../language';
 
 @Component({
   selector: 'app-heroes',
@@ -12,9 +13,11 @@ import { Repository } from '../Repository';
 export class HeroesComponent implements OnInit {
   heroes: Hero[];
   repos: Repository[];
+  languages: Language[];
   constructor(private heroService: HeroService) { }
 
   ngOnInit() {
+    this.getLanguages();
     this.getRepos();
   }
 
@@ -25,8 +28,18 @@ export class HeroesComponent implements OnInit {
 
   getRepos(): void{
     this.heroService.getRepos()
-    .subscribe(repos => this.repos = repos);
+    .subscribe(repos => this.repos = repos.slice(0,24));
     console.log(this.repos);
+  }
+
+  getLanguages(): void{
+    this.languages = [];
+    this.languages.push({id: 1, name: "unknown"});
+    this.heroService.getLanguages()
+    .subscribe((languages) =>{
+      this.languages = this.languages.concat(languages);
+      console.log(this.languages);
+    });
   }
 
   add(name: string): void {
