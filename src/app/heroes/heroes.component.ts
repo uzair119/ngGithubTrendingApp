@@ -34,7 +34,7 @@ export class HeroesComponent implements OnInit {
 
   getLanguages(): void{
     this.languages = [];
-    this.languages.push({id: 1, name: "unknown"});
+    this.languages.push({urlParam: "unknown", name: "Unknown Languages"});
     this.heroService.getLanguages()
     .subscribe((languages) =>{
       this.languages = this.languages.concat(languages);

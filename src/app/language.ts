@@ -1,4 +1,4 @@
 export class Language {
-    id: number;
+    urlParam: string;
     name: string;
   }
