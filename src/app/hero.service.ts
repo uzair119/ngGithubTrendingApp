@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
@@ -33,8 +33,14 @@ export class HeroService {
       );
   }
 
-  getRepos (): Observable<Repository[]> {
-    return this.http.get<Repository[]>(this.reposUrl)
+  getRepos (language: Language, since: string): Observable<Repository[]> {
+    // var httpparams = new HttpParams();
+    // if(language != null)
+    //   httpparams.set('language', language.name);
+    // httpparams.set('since', time);
+    //console.log(httpparams);
+    console.log(language);
+    return this.http.get<Repository[]>(this.reposUrl+'?language='+(language == null? '':language.urlParam) + '&since='+((since == null? '':since)))
       .pipe(
         tap(_ => this.log('fetched repos'))
       );

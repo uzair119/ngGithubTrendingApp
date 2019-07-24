@@ -25,6 +25,7 @@
     "@angular/router": "^8.0.0",
     "@angular/upgrade": "^8.0.0",
     "@ng-bootstrap/ng-bootstrap": "^5.1.0",
+    "@ng-select/ng-select": "^3.0.3",
     "angular-in-memory-web-api": "github:brandonroberts/in-memory-web-api-bazel#50a34d8",
     "core-js": "^2.5.4",
     "rxjs": "^6.5.1",
