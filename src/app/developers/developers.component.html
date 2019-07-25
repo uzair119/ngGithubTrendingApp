@@ -39,20 +39,20 @@
 </div> -->
 <div style = "margin-left: 30px; margin-right: 30px">
 <div class="row">
-  <div class="col-2 card card-hover"  style="list-style: none; margin: 10px 0px" *ngFor="let repo of repos">
+  <div class="col-2 card card-hover"  style="list-style: none; margin: 10px 0px" *ngFor="let dev of developers">
     
-  <img class="card-img-top"  src="{{repo.avatar}}" alt="Card image cap">
+  <img class="card-img-top"  src="{{dev.avatar}}" alt="Card image cap">
   <div class="card-body">
-    <a href="{{repo.url}}">
-    <h5 class="card-title">{{repo.name}}</h5>
+    <a href="{{dev.url}}">
+    <h5 class="card-title">{{dev.name}}</h5>
   </a>
   <div class="reveal p-2" [ngStyle]="{'background-color': repo.languageColor == null? 'green':repo.languageColor}">
-    {{repo.language == null? 'Unknown language': repo.language}}
+    {{dev.language == null? 'Unknown language': dev.language}}
     
 </div>
-<h3>{{repo.currentPeriodStars}}</h3>
+<h3>{{dev.currentPeriodStars}}</h3>
     
-    <p class="card-text">{{repo.description}}</p>
+    <p class="card-text">{{dev.description}}</p>
   
   </div>
 </div>

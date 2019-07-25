@@ -8,6 +8,7 @@ import { Hero } from './hero';
 import { MessageService } from './message.service';
 import { Repository } from './Repository';
 import { Language } from './language';
+import { Developer } from './developer';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -19,6 +20,7 @@ export class HeroService {
   private heroesUrl = 'api/heroes';  // URL to web api
   private reposUrl = 'https://github-trending-api.now.sh/repositories';
   private languageUrl = 'https://github-trending-api.now.sh/languages';
+  private developersUrl = 'https://github-trending-api.now.sh/developers';
 
   constructor(
     private http: HttpClient,
@@ -43,6 +45,15 @@ export class HeroService {
     return this.http.get<Repository[]>(this.reposUrl+'?language='+(language == null? '':language.urlParam) + '&since='+((since == null? '':since)))
       .pipe(
         tap(_ => this.log('fetched repos'))
+      );
+  }
+
+
+  getDevelopers (language: Language, since: string): Observable<Developer[]> {
+    console.log(language);
+    return this.http.get<Developer[]>(this.developersUrl+'?language='+(language == null? '':language.urlParam) + '&since='+((since == null? '':since)))
+      .pipe(
+        tap(_ => this.log('fetched devs'))
       );
   }
 
