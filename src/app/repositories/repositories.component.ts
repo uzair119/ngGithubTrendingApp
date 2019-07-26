@@ -1,56 +1,54 @@
 import { Component, OnInit } from '@angular/core';
-import { HeroService } from '../hero.service';
 import { Repository } from '../Repository';
 import { Language } from '../language';
-import { Developer } from '../developer';
-import { DevelopersService } from '../developers.service';
+import { RepositoriesService } from '../repositories.service';
 import { Time } from '../time';
 
 @Component({
-  selector: 'app-developers',
-  templateUrl: './developers.component.html',
-  styleUrls: ['./developers.component.css']
+  selector: 'app-repositories',
+  templateUrl: './repositories.component.html',
+  styleUrls: ['./repositories.component.css']
 })
-export class DevelopersComponent implements OnInit {
-  developers: Developer[];
+export class RepositoriesComponent implements OnInit {
   repos: Repository[];
   languages: Language[];
   times: Time[];
   selectedLanguage: Language;
   selectedTime: Time;
 
-  constructor(private devService: DevelopersService) { }
+  constructor(private repoService: RepositoriesService) { }
 
   ngOnInit() {
     this.times=[{urlParam:'daily', name: 'Today'},{urlParam: 'weekly', name: 'This week'},{urlParam: 'monthly', name: 'This month'}];
     this.getLanguages();
-    this.getDevelopers();
+    this.getRepos();
   }
 
-  getDevelopers(): void {
-    this.devService.getDevelopers(this.selectedLanguage, this.selectedTime)
-    .subscribe(developers => this.developers = developers.slice(0,24));
-    console.log(this.developers);
+  getRepos(): void{
+    this.repoService.getRepos(this.selectedLanguage, this.selectedTime)
+    .subscribe(repos => this.repos = repos.slice(0,24));
+    console.log(this.repos);
   }
 
   getLanguages(): void{
     this.languages = [];
     this.languages.push({urlParam: "unknown", name: "Unknown Languages"});
-    this.devService.getLanguages()
+    this.repoService.getLanguages()
     .subscribe((languages) =>{
       this.languages = this.languages.concat(languages);
       console.log(this.languages);
     });
   }
 
+
   changeLanguage(language: Language): void{
     this.selectedLanguage = language;
-    this.getDevelopers();
+    this.getRepos();
   }
 
   changeTime(time: Time): void{
     this.selectedTime = time;
-    this.getDevelopers();
+    this.getRepos();
   }
 
 }

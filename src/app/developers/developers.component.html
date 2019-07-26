@@ -1,7 +1,6 @@
-<h2>Trending repositories for {{selectedLanguage == null? 'any language' : selectedLanguage.name}} since {{selectedTime==null?'daily':selectedTime}}</h2>
+<h2>Trending repositories for {{selectedLanguage == null? 'any language' : selectedLanguage.name}} since {{selectedTime==null?'today':selectedTime.name|lowercase}}</h2>
 <div class="row">
   <div class="col">
-    <label>Your first ng-select</label>
     <ng-select style="float: right; margin-right: 50px; min-width: 250px;" class="d-inline-block" 
                    [items]="languages"
                    bindLabel="name"
@@ -12,8 +11,8 @@
     </ng-select>
     <ng-select style="float: right; margin-right: 50px; min-width: 250px;" class="d-inline-block" 
                    [items]="times"
-                   bindLabel="label"
-                   placeholder="Daily"
+                   bindLabel="name"
+                   placeholder="Today"
                    [(ngModel)]="selectedTime"
                    (change)="changeTime(selectedTime)"
                    >
@@ -46,14 +45,11 @@
     <a href="{{dev.url}}">
     <h5 class="card-title">{{dev.name}}</h5>
   </a>
-  <div class="reveal p-2" [ngStyle]="{'background-color': repo.languageColor == null? 'green':repo.languageColor}">
-    {{dev.language == null? 'Unknown language': dev.language}}
-    
-</div>
-<h3>{{dev.currentPeriodStars}}</h3>
-    
-    <p class="card-text">{{dev.description}}</p>
-  
+  <div class="card-text">
+     <div>🔥POPULAR REPO</div>
+    <a href="{{dev.repo.url}}">{{dev.repo.name}}</a>
+    <p style="font-size: smaller; font-family:Georgia, 'Times New Roman', Times, serif">{{dev.repo.description}}</p>
+  </div>
   </div>
 </div>
 </div>

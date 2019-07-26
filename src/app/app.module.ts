@@ -11,12 +11,10 @@ import { InMemoryDataService }  from './in-memory-data.service';
 import { AppRoutingModule }     from './app-routing.module';
 
 import { AppComponent }         from './app.component';
-import { DashboardComponent }   from './dashboard/dashboard.component';
-import { HeroDetailComponent }  from './hero-detail/hero-detail.component';
-import { HeroesComponent }      from './heroes/heroes.component';
-import { HeroSearchComponent }  from './hero-search/hero-search.component';
+import { RepositoriesComponent }      from './repositories/repositories.component';
 import { MessagesComponent }    from './messages/messages.component';
 import { DevelopersComponent } from './developers/developers.component';
+import { LanguageSelectorComponent } from './language-selector/language-selector.component';
 
 @NgModule({
   imports: [
@@ -35,12 +33,10 @@ import { DevelopersComponent } from './developers/developers.component';
   ],
   declarations: [
     AppComponent,
-    DashboardComponent,
-    HeroesComponent,
-    HeroDetailComponent,
+    RepositoriesComponent,
     MessagesComponent,
-    HeroSearchComponent,
-    DevelopersComponent
+    DevelopersComponent,
+    LanguageSelectorComponent
   ],
   bootstrap: [ AppComponent ]
 })
