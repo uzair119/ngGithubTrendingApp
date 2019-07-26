@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Language } from '../language';
-import { HeroService } from '../hero.service';
 
 @Component({
   selector: 'app-language-selector',
@@ -13,7 +12,7 @@ export class LanguageSelectorComponent implements OnInit {
   selectedLanguage: Language;
   selectedTime: string;
 
-  constructor(private heroService: HeroService) { }
+  constructor(private heroService: Language) { }
 
   ngOnInit() {
     this.times=['daily', 'weekly', 'monthly'];

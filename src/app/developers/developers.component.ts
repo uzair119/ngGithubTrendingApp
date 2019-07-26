@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HeroService } from '../hero.service';
 import { Repository } from '../Repository';
 import { Language } from '../language';
 import { Developer } from '../developer';
