@@ -5,16 +5,12 @@ import { HttpClientModule }    from '@angular/common/http';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { NgSelectModule } from '@ng-select/ng-select';
 
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService }  from './in-memory-data.service';
-
 import { AppRoutingModule }     from './app-routing.module';
 
 import { AppComponent }         from './app.component';
 import { RepositoriesComponent }      from './repositories/repositories.component';
 import { MessagesComponent }    from './messages/messages.component';
 import { DevelopersComponent } from './developers/developers.component';
-import { LanguageSelectorComponent } from './language-selector/language-selector.component';
 
 @NgModule({
   imports: [
@@ -35,8 +31,7 @@ import { LanguageSelectorComponent } from './language-selector/language-selector
     AppComponent,
     RepositoriesComponent,
     MessagesComponent,
-    DevelopersComponent,
-    LanguageSelectorComponent
+    DevelopersComponent
   ],
   bootstrap: [ AppComponent ]
 })
