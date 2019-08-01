@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Repository } from '../Repository';
+import { Repository } from '../repository';
 import { Language } from '../language';
 import { RepositoriesService } from '../repositories.service';
 import { Time } from '../time';

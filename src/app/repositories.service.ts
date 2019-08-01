@@ -4,7 +4,7 @@ import { MessageService } from './message.service';
 import { Language } from './language';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { Repository } from './Repository';
+import { Repository } from './repository';
 import { Time } from './time';
 
 @Injectable({
