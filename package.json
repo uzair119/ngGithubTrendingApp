@@ -5,11 +5,12 @@
   "description": "Example project from an angular.io guide.",
   "scripts": {
     "lint": "tslint ./src/**/*.ts -t verbose",
-    "start": "ng serve",
+    "start": "node server.js",
     "test": "ng test",
     "build": "ng build --prod",
     "e2e": "ng e2e",
-    "ng": "ng"
+    "ng": "ng",
+    "postinstall": "ng build --aot --prod"
   },
   "keywords": [],
   "author": "",
@@ -28,6 +29,8 @@
     "@ng-select/ng-select": "^3.0.3",
     "angular-in-memory-web-api": "github:brandonroberts/in-memory-web-api-bazel#50a34d8",
     "core-js": "^2.5.4",
+    "express": "^4.17.1",
+    "path": "^0.12.7",
     "rxjs": "^6.5.1",
     "zone.js": "~0.9.1"
   },
@@ -51,6 +54,10 @@
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
     "typescript": "~3.4.3"
+  },
+  "engines": {
+    "node": "~10.16.0",
+    "npm": "~6.9.0"
   },
   "repository": {}
 }
